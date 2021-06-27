@@ -6,3 +6,8 @@ PsychoMatch effectively matches up the patient and the psychologist.
 This is done through a simple survey that connects the dots of preference and helps matchmake between patient and doctor seamlessly. 
 If your a psychologist, fill out our simple form and get notified when you get matched. 
 If your a patient, fill out our survey to map  out your perfect psychologist and get matched instantly! 
+
+To run our code:
+```python
+python manage.py
+```
