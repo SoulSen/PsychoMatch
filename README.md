@@ -1,5 +1,4 @@
 # PsychoMatch
-Here at PsychoMatch
 In the past 2 years alone, 59 million people have seeked mental health treatment in the US. However, finding the right psychologist that fits your needs shouldn't have to be a headache.
 Here at PyschoMatch we believe finding the right psychologist is the difference between recieving high quality treatment and treatment that dissapoints.
 On the way, we would like to make a large impact on the millions who suffer from mental illnesses every year. 
