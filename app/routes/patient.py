@@ -17,4 +17,4 @@ def patient_survey_post():
 
     App.match_patient(patient)
 
-    return redirect(url_for('patient_form'))
+    return redirect(url_for('thank_you'))
