@@ -22,7 +22,7 @@
     Filling out this form will help you match you to a patient!</p>
 <br>
 
-<form action="../thankyou" class="survey-body" method="POST">
+<form action="../psychologist" class="survey-body" method="POST">
 
     <!-- Personal details -->
     <fieldset>
@@ -117,8 +117,8 @@
     <fieldset>
         <legend><label>I want to meet:</label></legend>
         <p>
-            <input name="meeting" type="radio" value="daily"> Daily with my patient<br>
-            <input name="meeting" type="radio" value="periodically"> Periodically with my patient
+            <input name="meeting" type="radio" value="daily" required> Daily with my patient<br>
+            <input name="meeting" type="radio" value="periodically" required> Periodically with my patient
         </p>
     </fieldset>
     <br>
@@ -126,8 +126,8 @@
 
     <legend><label>I would like to meet:</label></legend>
     <p>
-        <input name="place_to_meet" type="radio" value="in person"> In person with my psychologist<br>
-        <input name="place_to_meet" type="radio" value="periodically"> Online with my psychologist
+        <input name="place_to_meet" type="radio" value="in person" required> In person with my psychologist<br>
+        <input name="place_to_meet" type="radio" value="periodically" required> Online with my psychologist
     </p>
     </fieldset>
     <br>
@@ -136,8 +136,8 @@
     <fieldset>
         <legend><label>I like to:</label></legend>
         <p>
-            <input name="meds" type="radio" value="medications"> Prescribe medications to my patients if needed<br>
-            <input name="meds" type="radio" value="no_medications"> Only talk with my patients without prescribing
+            <input name="meds" type="radio" value="medications" required> Prescribe medications to my patients if needed<br>
+            <input name="meds" type="radio" value="no_medications" required> Only talk with my patients without prescribing
             medications
         </p>
     </fieldset>

@@ -12,8 +12,8 @@ EMAIL = os.environ["EMAIL"]
 PASSWORD = os.environ["PASSWORD"]
 
 MATCH_COLUMNS = {"age": age_predicate, "gender": checkbox_predicate, "race": checkbox_predicate,
-                 "communication": compare_predicate, "personality": checkbox_predicate, "meeting": compare_predicate,
-                 "meeting_platform": compare_predicate, "medication": compare_predicate}
+                 "communication": compare_predicate, "doctor_personality": checkbox_predicate, "meeting": compare_predicate,
+                 "place_to_meet": compare_predicate, "meds": compare_predicate}
 
 
 class App:
@@ -38,13 +38,16 @@ class App:
             cursor = cur.execute('SELECT * FROM PsychoInfo')
 
             column_names = list(map(lambda x: x[0], cursor.description))
+
             values = [getattr(psychologist_, column) for column in column_names]
 
-            cur.execute('''INSERT INTO PsychoInfo VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', values)
+
+            cur.execute('''INSERT INTO PsychoInfo VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', values)
 
     @staticmethod
     def match_patient(patient_):
         scores = collections.defaultdict(int)
+        print("hello")
 
         with sqlite3.connect('./app/database/database.sqlite') as conn:
             conn.row_factory = sqlite3.Row
@@ -64,14 +67,13 @@ class App:
         sorted_scores = sorted(scores, key=scores.get, reverse=True)
 
         with sqlite3.connect('./app/database/database.sqlite') as conn:
-            cur = conn.cursor()
             conn.row_factory = sqlite3.Row
 
-            cur.execute("SELECT * FROM PsychoInfo WHERE name=?", (sorted_scores[0]))
+            rows = conn.execute('SELECT * FROM PsychoInfo WHERE name=?', (sorted_scores[0],))
 
-            row = cur.fetchone()
+            row = rows.fetchall()[0]
 
-        App._send_email(patient_.email, row)
+        App._send_email(patient_.email, dict(row))
 
     @staticmethod
     def _setup_database():
@@ -79,8 +81,8 @@ class App:
             cur = conn.cursor()
 
             cur.execute('''CREATE TABLE IF NOT EXISTS PsychoInfo (name text, email text, phone_number text, hospital 
-            text, age number, gender text, race text, communication text, personality text, meeting text, 
-            meeting_platform text, medication text, user_message text)''')
+            text, age number, gender text, race text, communication text, doctor_personality text, meeting text, 
+            place_to_meet text, meds text, user_message text)''')
 
     @staticmethod
     def _send_email(receiver, matched_psychologist):
@@ -89,7 +91,7 @@ class App:
         phone_number = matched_psychologist["phone_number"]
         hospital = matched_psychologist["hospital"]
 
-        body = f"Your perfect psychologist is: {name}\nTo contact them:\nEmail: {email}\nPhone Number: {phone_number}" \
+        body = f"Your perfect psychologist is: {name}\n\nTo contact them:\nEmail: {email}\nPhone Number: {phone_number}" \
                f"\nHospital: {hospital}"
 
         message = MIMEText(body)

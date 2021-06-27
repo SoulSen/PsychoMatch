@@ -21,7 +21,7 @@
 <p align="center" id="description"><b>Hello:</b>
     Filling out this form will help you match up with your ideal psychologists!</p>
 <br>
-<form action="../thankyou" class="survey-body" method="POST">
+<form action="../patient" class="survey-body" method="POST">
     <div id="personal">
         <!-- Personal details -->
         <fieldset>
@@ -64,20 +64,20 @@
     </fieldset>
     <br>
 
-    <!-"doctor_personality -->
+    <!-- doctor_personality -->
     <fieldset>
         <legend><label>What is the ideal race of your ideal psychologist?</label></legend>
         <p class="required checkbox-group">
-            <input name="doctor_personality" type="checkbox" value="american indian or alaska native"> American Indian
+            <input name="race" type="checkbox" value="american indian or alaska native"> American Indian
             or Alaska Native <br>
-            <input name="doctor_personality" type="checkbox" value="asian"> Asian <br>
-            <input name="doctor_personality" type="checkbox" value="black or african american"> Black or African
+            <input name="race" type="checkbox" value="asian"> Asian <br>
+            <input name="race" type="checkbox" value="black or african american"> Black or African
             American <br>
-            <input name="doctor_personality" type="checkbox" value="hispanic or latino"> Hispanic or Latino <br>
-            <input name="doctor_personality" type="checkbox" value="native hawaiian or other pacific islander"> Native
+            <input name="race" type="checkbox" value="hispanic or latino"> Hispanic or Latino <br>
+            <input name="race" type="checkbox" value="native hawaiian or other pacific islander"> Native
             Hawaiian or Other Pacific Islander <br>
-            <input name="doctor_personality" type="checkbox" value="white"> White <br>
-            <input name="doctor_personality" type="checkbox" value="dont_care"> Dont Care <br>
+            <input name="race" type="checkbox" value="white"> White <br>
+            <input name="race" type="checkbox" value="dont_care"> Dont Care <br>
         </p>
     </fieldset>
     <br>
@@ -122,8 +122,8 @@
     <fieldset>
         <legend><label>I would like to meet:</label></legend>
         <p>
-            <input name="place_to_meet" type="radio" value="in person"> In person with my doctor<br>
-            <input name="place_to_meet" type="radio" value="periodically"> Online with my doctor
+            <input name="place_to_meet" type="radio" value="in person" required> In person with my doctor<br>
+            <input name="place_to_meet" type="radio" value="periodically" required> Online with my doctor
         </p>
     </fieldset>
     <br>
@@ -132,9 +132,9 @@
     <fieldset>
         <legend><label>I would like:</label></legend>
         <p>
-            <input name="meds" type="radio" value="medications"> To get medications prescibed if the psychologist
+            <input name="meds" type="radio" value="medications" required> To get medications prescibed if the psychologist
             believes its needed<br>
-            <input name="meds" type="radio" value="no_medications"> To only talk to my psychologist without recieving
+            <input name="meds" type="radio" value="no_medications" required> To only talk to my psychologist without recieving
             medications
         </p>
     </fieldset>

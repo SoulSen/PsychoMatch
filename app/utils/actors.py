@@ -13,10 +13,10 @@ class _User:
     age: int = field(default_factory=int)
     race: _MultiStr = field(default_factory=_MultiStr)
     communication: str = field(default_factory=str)
-    personality: _MultiStr = field(default_factory=_MultiStr)
+    doctor_personality: _MultiStr = field(default_factory=_MultiStr)
     meeting: str = field(default_factory=str)
-    meeting_platform: str = field(default_factory=str)
-    medication: str = field(default_factory=str)
+    place_to_meet: str = field(default_factory=str)
+    meds: str = field(default_factory=str)
     user_message: str = field(default_factory=str)
 
     def __init__(self, form):
@@ -33,8 +33,14 @@ class _User:
 class Patient(_User):
     gender: _MultiStr = field(default_factory=_MultiStr)
 
+    def __init__(self, form):
+        super().__init__(form)
+
 
 @dataclass
 class Psychologist(_User):
     gender: str = field(default_factory=str)
     hospital: str = field(default_factory=str)
+
+    def __init__(self, form):
+        super().__init__(form)
