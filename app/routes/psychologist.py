@@ -17,4 +17,4 @@ def psychologist_survey_post():
 
     App.store_psychologist(psychologist)
 
-    return redirect(url_for('psych_form'))
+    return redirect(url_for('thank_you'))
