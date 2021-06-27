@@ -1,0 +1,146 @@
+body {
+	font-family: 'Open Sans', Helvetica, sans-serif !important;
+	height: 100%;
+	overflow-x: hidden;
+}
+
+legend {
+	font-weight: 700;
+}
+
+h1 {
+	font-size: 1.5em;
+	text-align: center;
+	text-transform: capitalize;
+}
+
+form {
+	margin: 0 auto;
+	width: 70%;
+	padding: 2em;
+	border: 1px solid #CCC;
+	border-radius: 1em;
+}
+
+li {
+	color: black;
+	display: inline-block;
+	padding: 10px;
+}
+
+li:hover {
+	color: black;
+	cursor: pointer;
+}
+
+img {
+	width: 100%;
+	overflow: hidden;
+}
+
+#navbar {
+	overflow: hidden;
+	background-color: #FFF;
+	z-index: 11;
+	padding: 1% 0px;
+}
+
+#navbar a {
+	float: left;
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+#navbar a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+#navbar a.active {
+	background-color: #04AA6D;
+	color: white;
+}
+
+.content {
+	padding: 16px;
+}
+
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+.sticky+.content {
+	padding-top: 60px;
+}
+
+.footer {
+	text-align: center;
+	padding: 10% 0;
+	background-color: #f1dbc6;
+	margin-top: 7%;
+}
+
+
+/** home **/
+
+#home {
+	margin-bottom: 7%
+}
+
+.base {
+	position: relative;
+}
+
+.text-block {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+/** thank you page **/
+
+.thank-you {
+	background-color: #f1dbc6;
+}
+
+.thank-you-text {
+	text-align: center;
+	margin: 10% 0%;
+}
+
+
+/** other **/
+
+@media screen and (max-width: 800px) {
+	.leftcolumn,
+	.rightcolumn {
+		width: 100%;
+		padding: 0;
+	}
+}
+
+.navigation-bar {
+	transform: translateX(-50%);
+	left: 50%;
+	position: absolute;
+	padding: 10px;
+	border: 1px solid #333;
+}
+
+.center {
+	margin: auto;
+	width: 40%;
+	padding-right: 1000px;
+}
+
+.survey-body {
+	background-color: white;
+}
