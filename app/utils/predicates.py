@@ -1,3 +1,6 @@
+#  Copyright (c) 2021 SoulSen.
+#  All rights reserved.
+
 def age_predicate(patient, psychologist, column):
     age = psychologist[column]
 

@@ -1,3 +1,6 @@
+#  Copyright (c) 2021 SoulSen.
+#  All rights reserved.
+
 from dataclasses import dataclass, field
 
 

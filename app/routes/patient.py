@@ -1,16 +1,21 @@
+#  Copyright (c) 2021 SoulSen.
+#  All rights reserved.
+
 from flask import request, render_template, redirect, url_for
 
-from . import patient_
+from . import Blueprints
 from .. import App
 from ..utils.actors import Patient
 
+patient = Blueprints.PATIENT
 
-@patient_.route('/patient', methods=["GET"])
+
+@patient.route('/patient', methods=["GET"])
 def patient_survey_get():
     return render_template('patient.html')
 
 
-@patient_.route('/patient', methods=['POST'])
+@patient.route('/patient', methods=['POST'])
 def patient_survey_post():
     form_ = request.form
     patient = Patient(form_)

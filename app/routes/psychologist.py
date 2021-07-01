@@ -1,8 +1,13 @@
+#  Copyright (c) 2021 SoulSen.
+#  All rights reserved.
+
 from flask import request, render_template, redirect, url_for
 
-from . import psychologist_
+from . import Blueprints
 from .. import App
 from ..utils.actors import Psychologist
+
+psychologist_ = Blueprints.PSYCHOLOGIST
 
 
 @psychologist_.route('/psychologist', methods=["GET"])

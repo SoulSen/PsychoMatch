@@ -1,18 +1,25 @@
+#  Copyright (c) 2021 SoulSen.
+#  All rights reserved.
+
 import collections
-import os
 import smtplib
 import sqlite3
+from configparser import ConfigParser
 from email.mime.text import MIMEText
 
 from flask import Flask
 
 from .utils.predicates import age_predicate, compare_predicate, checkbox_predicate
 
-EMAIL = os.environ["EMAIL"]
-PASSWORD = os.environ["PASSWORD"]
+_config = ConfigParser()
+_config.read("config.ini")
+
+EMAIL = _config['EMAIL_CREDS']['EMAIL']
+PASSWORD = _config['EMAIL_CREDS']['PASSWORD']
 
 MATCH_COLUMNS = {"age": age_predicate, "gender": checkbox_predicate, "race": checkbox_predicate,
-                 "communication": compare_predicate, "doctor_personality": checkbox_predicate, "meeting": compare_predicate,
+                 "communication": compare_predicate, "doctor_personality": checkbox_predicate,
+                 "meeting": compare_predicate,
                  "place_to_meet": compare_predicate, "meds": compare_predicate}
 
 
@@ -22,12 +29,13 @@ class App:
 
         self._setup_database()
 
-        from .routes import home_, patient_, psychologist_, thank_you_
+        from .routes import Blueprints
 
-        self.app.register_blueprint(home_)
-        self.app.register_blueprint(patient_)
-        self.app.register_blueprint(psychologist_)
-        self.app.register_blueprint(thank_you_)
+        attrs = [attr for attr in dir(Blueprints) if
+                 not attr.startswith('__') and not callable(getattr(Blueprints, attr))]
+
+        for blueprint in attrs:
+            self.app.register_blueprint(getattr(Blueprints, blueprint))
 
         self.app.run(host='0.0.0.0', port=8080)
 
@@ -40,7 +48,6 @@ class App:
             column_names = list(map(lambda x: x[0], cursor.description))
 
             values = [getattr(psychologist_, column) for column in column_names]
-
 
             cur.execute('''INSERT INTO PsychoInfo VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', values)
 
